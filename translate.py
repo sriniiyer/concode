@@ -40,7 +40,7 @@ def main():
 
   test = CDDataset(opt.src, None, test=True, trunc=opt.trunc)
   test.toNumbers(checkpoint['vocab'])
-  total_test = test.compute_batches(opt.batch_size, checkpoint['vocab'], checkpoint['opt'].max_chars, 0, 1, checkpoint['opt'].decoder_type, randomize=False, no_filter=True)
+  total_test = test.compute_batches(opt.batch_size, checkpoint['vocab'], checkpoint['opt'].max_camel, 0, 1, checkpoint['opt'].decoder_type, randomize=False, no_filter=True)
   sys.stderr.write('Total test: {}'.format(total_test))
   sys.stderr.flush()
 
@@ -54,7 +54,7 @@ def main():
     predictions.append(model.predict(batch, opt, None))
 
   for idx, prediction in enumerate(predictions):
-    prediction.output(opt.output, idx, attention=opt.attention)
+    prediction.output(opt.output, idx)
 
 if __name__ == "__main__":
   main()
