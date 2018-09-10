@@ -7,6 +7,7 @@ from preprocess import Vocab, CDDataset
 from S2SModel import S2SModel
 from Trainer import Trainer
 import os
+import numpy
 
 def main():
 
@@ -81,7 +82,7 @@ def main():
                       validation set or (ii) epoch has gone past
                       start_decay_at""")
 
-  parser.add_argument('-report_every', type=int, default=50,
+  parser.add_argument('-report_every', type=int, default=500,
                       help="Print stats at this interval.")
   parser.add_argument('-train_from', default='', type=str,
                       help="""If training from a checkpoint then this is the
@@ -91,10 +92,12 @@ def main():
 
   opt = parser.parse_args()
 
+  torch.backends.cudnn.deterministic = True
   torch.cuda.set_device(0)
   torch.manual_seed(opt.seed)
   random.seed(opt.seed)
   torch.cuda.manual_seed(opt.seed)
+  numpy.random.seed(opt.seed)
 
 
   try:
