@@ -3,13 +3,15 @@
 ### Install requirements
 
 Pytorch 0.3 (minor changes needed for 0.4)
-```pip install antlr4-python3-runtime==4.6
+```
+pip install antlr4-python3-runtime==4.6
 pip install allennlp==0.3.0
 pip install ipython
 ```
 
 ### Download data from Google drive
-```mkdir concode
+```
+mkdir concode
 cd concode
 ```
 Download data from: https://drive.google.com/drive/folders/1kC6fe7JgOmEHhVFaXjzOmKeatTJy1I1W into this folder.
@@ -37,7 +39,11 @@ Best BLEU so far is: 21.48 - Exact is 2.85 - on epoch 15
 Prediction:
 
 On Dev: 
-`ipython predict.ipy -- -start 5 -end 30 -beam 3 -models_dir  data/d_100k_762/s2s/ -test_file data/valid.dataset -tgt_len 500 `
+```
+ipython predict.ipy -- -start 5 -end 30 -beam 3 -models_dir  data/d_100k_762/s2s/ -test_file data/valid.dataset -tgt_len 500 
+```
 On Test: 
-`ipython predict.ipy -- -start 15 -end 15 -beam 3 -models_dir  data/d_100k_762/s2s/ -test_file data/test.dataset -tgt_len 500 `
+```
+ipython predict.ipy -- -start 15 -end 15 -beam 3 -models_dir  data/d_100k_762/s2s/ -test_file data/test.dataset -tgt_len 500 
+```
 
