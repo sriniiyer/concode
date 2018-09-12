@@ -20,15 +20,13 @@ Download data from: https://drive.google.com/drive/folders/1kC6fe7JgOmEHhVFaXjzO
 `python build.py -train_file concode/train_shuffled.json -valid_file concode/valid_shuffled.json -test_file concode/test_shuffled.json  -output_folder data  -train_num 100000 -valid_num 2000`
 
 ### Prepare pytorch datasets
-```mkdir data/d_100k_762
+```
+mkdir data/d_100k_762
 python preprocess.py -train data/train.dataset -valid data/valid.dataset -save_data data/d_100k_762/concode -train_max 100000 -valid_max 2000
 ``` 
 
 ### Train seq2seq
 `python train.py -dropout 0.5  -data data/d_100k_762/concode -save_model data/d_100k_762/s2s -epochs 30 -learning_rate 0.001 -seed 1123 -enc_layers 2 -dec_layers 2  -batch_size 50 -src_word_vec_size 1024 -tgt_word_vec_size 512 -rnn_size 1024 -encoder_type regular -decoder_type regular -copy_attn `
-
-Best BLEU so far is: 19.7 - Exact is 2.9 - on epoch 15
-Best BLEU so far is: 21.48 - Exact is 2.85 - on epoch 15
 
 ### Train seq2prod
 `python train.py -dropout 0.5  -data data/d_100k_762/concode -save_model data/d_100k_762/s2p -epochs 30 -learning_rate 0.001 -seed 1123 -enc_layers 2 -dec_layers 2  -batch_size 20 -src_word_vec_size 1024 -tgt_word_vec_size 512 -rnn_size 1024 -encoder_type regular -decoder_type prod -brnn -copy_attn `
@@ -42,7 +40,7 @@ On Dev:
 ```
 ipython predict.ipy -- -start 5 -end 30 -beam 3 -models_dir  data/d_100k_762/s2s/ -test_file data/valid.dataset -tgt_len 500 
 ```
-On Test: 
+On Test (Use best epoch from dev): 
 ```
 ipython predict.ipy -- -start 15 -end 15 -beam 3 -models_dir  data/d_100k_762/s2s/ -test_file data/test.dataset -tgt_len 500 
 ```
