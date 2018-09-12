@@ -38,10 +38,12 @@ Prediction:
 
 On Dev: 
 ```
-ipython predict.ipy -- -start 5 -end 30 -beam 3 -models_dir  data/d_100k_762/s2s/ -test_file data/valid.dataset -tgt_len 500 
+ipython predict.ipy -- -start 5 -end 30 -beam 3 -models_dir  data/d_100k_762/concode/ -test_file data/valid.dataset -tgt_len 500 
 ```
 On Test (Use best epoch from dev): 
 ```
-ipython predict.ipy -- -start 15 -end 15 -beam 3 -models_dir  data/d_100k_762/s2s/ -test_file data/test.dataset -tgt_len 500 
+ipython predict.ipy -- -start 15 -end 15 -beam 3 -models_dir  data/d_100k_762/concode/ -test_file data/test.dataset -tgt_len 500 
 ```
+
+For other model types, use the appropriate `-models_dir`.
 
