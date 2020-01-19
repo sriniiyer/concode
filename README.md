@@ -17,7 +17,7 @@ cd concode
 Download data from: https://drive.google.com/drive/folders/1kC6fe7JgOmEHhVFaXjzOmKeatTJy1I1W into this folder.
 
 ### Create production rules. This restricts the data to 100000 train and 2000 valid/test. If your resources can support it,  you can use more.
-`python build.py -train_file concode/train_shuffled.json -valid_file concode/valid_shuffled.json -test_file concode/test_shuffled.json  -output_folder data  -train_num 100000 -valid_num 2000`
+`python build.py -train_file concode/train_shuffled_with_path_and_id_concode.json -valid_file concode/valid_shuffled_with_path_and_id_concode.json -test_file concode/test_shuffled_with_path_and_id_concode.json  -output_folder data  -train_num 100000 -valid_num 2000`
 
 ### Prepare pytorch datasets
 ```
