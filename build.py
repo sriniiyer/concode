@@ -104,7 +104,7 @@ def processFiles(fname, prefix, dset, trunc):
     dataset.append(
       {'nl': nlToks,
        'code': codeToks,
-       'idx': str(i),
+       'idx': js['idx'], #str(i),
        'varNames': memberVarNames,
        'varTypes': memberVarTypes,
        'rules': rule_seq,
